@@ -35,6 +35,7 @@ export const GlobalStyle = createGlobalStyle`
     font-size: ${baseFontSize}px;
     font-weight: 400;
     line-height: 1.3333;
+    background: ${colors.primaryLight};
   }
   @supports (font-variation-settings: normal) {
     html {

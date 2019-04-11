@@ -1,6 +1,5 @@
 import React from "react"
 import PropTypes from "prop-types"
-import styled from "styled-components"
 
 import { colors } from "../styled"
 import SideTitleSection, { SideMargin } from "../styled/SideTitle"
@@ -9,27 +8,28 @@ import SplitView from "../styled/SplitView"
 import Image from "../styled/Image"
 import { MediumTitle } from "../styled/typography"
 
-const AboutPersonSection = ({ person, borderRight }) => (
+const AboutPersonSection = ({ personalInfo, borderRight }) => (
   <Container color={colors.primaryLight} borderRight={borderRight}>
     <SideTitleSection title="Partner">
-      <MediumTitle>{person}</MediumTitle>
+      <MediumTitle>
+        {personalInfo.person.first_name} {personalInfo.person.last_name}
+      </MediumTitle>
     </SideTitleSection>
 
-    <p>About – asd asdf asdf</p>
-    <Image src="https://bolligerstudios.ch/site/assets/files/1/webbilder00014.1600x0.jpg" />
+    <p>About &mdash; {personalInfo.description}</p>
+
+    {personalInfo.photo && <Image src={personalInfo.photo.data.full_url} />}
 
     <SplitView>
-      <SideMargin>Social Links</SideMargin>
+      <SideMargin>Links</SideMargin>
 
-      <p>
-        <a>Github</a>
-        <a>Blog</a>
-      </p>
+      <p>{personalInfo.links}</p>
     </SplitView>
   </Container>
 )
 
 AboutPersonSection.propTypes = {
+  personalInfo: PropTypes.object.isRequired,
   borderRight: PropTypes.bool
 }
 

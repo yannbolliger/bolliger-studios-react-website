@@ -1,8 +1,9 @@
 import React from "react"
 import styled from "styled-components"
 
-import { colors, baseUnits } from "../styled"
+import { baseUnits } from "../styled"
 import Container from "../styled/Container"
+import SplitView from "../styled/SplitView"
 import SideTitleSection from "../styled/SideTitle"
 import { MediumParagraph } from "../styled/typography"
 import AboutPersonSection from "./AboutPersonSection"
@@ -12,6 +13,7 @@ const AboutSection = () => (
     <Container>
       <Logo src="static/BST-Logo.svg" />
     </Container>
+
     <Container borderBottom>
       <SideTitleSection title="Über uns">
         <MediumParagraph>
@@ -20,10 +22,11 @@ const AboutSection = () => (
         </MediumParagraph>
       </SideTitleSection>
     </Container>
-    <Container color={colors.primaryLight}>
+
+    <SplitView>
       <AboutPersonSection person="Yann Bolliger" borderRight />
       <AboutPersonSection person="Éric Bolliger" />
-    </Container>
+    </SplitView>
   </>
 )
 

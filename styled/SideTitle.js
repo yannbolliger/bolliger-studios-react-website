@@ -4,22 +4,20 @@ import styled from "styled-components"
 
 import { baseUnits } from "."
 import { SmallTitle } from "./typography"
+import SplitView from "./SplitView"
 
-const SideTitleWrapper = styled.div`
-  display: flex;
-  flex-flow: row no-wrap;
-`
-
-const TitleWithMargin = styled(SmallTitle)`
+export const SideMargin = styled.div`
   width: ${baseUnits(4)};
   flex-shrink: 0;
 `
 
 const SideTitleSection = ({ title, children }) => (
-  <SideTitleWrapper>
-    <TitleWithMargin>{title}</TitleWithMargin>
+  <SplitView>
+    <SideMargin>
+      <SmallTitle>{title}</SmallTitle>
+    </SideMargin>
     {children}
-  </SideTitleWrapper>
+  </SplitView>
 )
 
 SideTitleSection.propTypes = {

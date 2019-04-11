@@ -36,13 +36,12 @@ export default class extends Document {
   render = () => (
     <Html>
       <Head>
-        <meta charset="utf-8" />
+        <meta charSet="utf-8" />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
         <link href="https://rsms.me/inter/inter.css" rel="stylesheet" />
-        <title>Bolliger Studios</title>
       </Head>
       <body>
         <GlobalStyle />

@@ -2,8 +2,8 @@ import React from "react"
 import Head from "next/head"
 
 import AboutSection from "../components/AboutSection"
-// import ProjectsSection from "../presenters/ProjectsSection"
-// import ContactSection from "../presenters/ContactSection"
+import ProjectsSection from "../components/ProjectsSection"
+import ContactSection from "../components/ContactSection"
 
 const Home = () => (
   <>
@@ -12,10 +12,8 @@ const Home = () => (
     </Head>
 
     <AboutSection />
-    {
-      // <ProjectsSection />
-      // <ContactSection />
-    }
+    <ProjectsSection />
+    <ContactSection />
   </>
 )
 

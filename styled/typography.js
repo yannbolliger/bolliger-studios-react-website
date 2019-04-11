@@ -11,12 +11,16 @@ export const SmallTitle = styled.h4`
 export const MediumTitle = styled.h3`
   font-size: 1.66666rem;
   font-weight: 500;
+  line-height: 1.2;
   margin-bottom: ${baseUnits(0.5)};
 `
 
 export const LargeTitle = styled.h2`
   font-size: 3rem;
+  line-height: 1;
   font-weight: 500;
+
+  margin-bottom: ${baseUnits(0.5)};
 `
 
 export const MediumParagraph = styled(MediumTitle)`

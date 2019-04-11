@@ -2,7 +2,7 @@ import React from "react"
 import Document, { Html, Head, Main, NextScript } from "next/document"
 import { ServerStyleSheet } from "styled-components"
 
-import { GlobalStyle } from "../presenters"
+import { GlobalStyle } from "../styled"
 
 export default class extends Document {
   /**
@@ -42,6 +42,7 @@ export default class extends Document {
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
         <link href="https://rsms.me/inter/inter.css" rel="stylesheet" />
+        <title>Bolliger Studios</title>
       </Head>
       <body>
         <GlobalStyle />

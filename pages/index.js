@@ -1,5 +1,16 @@
 import React from "react"
+import AboutSection from "../components/AboutSection"
+// import ProjectsSection from "../presenters/ProjectsSection"
+// import ContactSection from "../presenters/ContactSection"
 
-const Home = () => <h1>Welcome to Next.js!</h1>
+const Home = () => (
+  <>
+    <AboutSection />
+    {
+      // <ProjectsSection />
+      // <ContactSection />
+    }
+  </>
+)
 
 export default Home

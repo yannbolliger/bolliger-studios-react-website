@@ -1,15 +1,12 @@
 import React from "react"
-import styled from "styled-components"
+import PropTypes from "prop-types"
 
 import { useApiData } from "../api"
-import { baseUnits } from "../styled"
-import Container from "../styled/Container"
 import SplitView from "../styled/SplitView"
-import SideTitleSection from "../styled/SideTitle"
-import { MediumParagraph } from "../styled/typography"
+import TextBlockSection from "./TextBlockSection"
 import AboutPersonSection from "./AboutPersonSection"
 
-const AboutSection = () => {
+const AboutSection = ({ textBlock }) => {
   const people = useApiData({
     collection: "personal_infos",
     fields: "*, person.first_name, person.last_name, photo.*"
@@ -17,18 +14,7 @@ const AboutSection = () => {
 
   return (
     <>
-      <Container>
-        <Logo src="static/BST-Logo.svg" />
-      </Container>
-
-      <Container borderBottom>
-        <SideTitleSection title="Über uns">
-          <MediumParagraph>
-            Wir sind Éric und Yann. Uns faszinieren Grafik, Gin, die digitale
-            Welt...
-          </MediumParagraph>
-        </SideTitleSection>
-      </Container>
+      <TextBlockSection textBlock={textBlock} />
 
       {people[0] && people[1] && (
         <SplitView>
@@ -40,8 +26,8 @@ const AboutSection = () => {
   )
 }
 
-const Logo = styled.img`
-  width: ${baseUnits(6.28)};
-`
+AboutSection.propTypes = {
+  textBlock: PropTypes.object
+}
 
 export default AboutSection

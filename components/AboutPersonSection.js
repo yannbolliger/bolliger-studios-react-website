@@ -11,7 +11,7 @@ import Image from "../styled/Image"
 import { MediumTitle } from "../styled/typography"
 
 const AboutPersonSection = ({ personalInfo, borderRight }) => (
-  <Container color={colors.primaryLight} borderRight={borderRight}>
+  <Container color={colors.primaryLight} borderRight={borderRight} borderTop>
     <SideTitleSection title="Partner">
       <MediumTitle>
         {personalInfo.person.first_name} {personalInfo.person.last_name}

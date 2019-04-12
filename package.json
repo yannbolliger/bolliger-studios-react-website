@@ -2,7 +2,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "deploy": "bash deploy.sh"
   },
   "name": "bolliger-studios-react-website",
   "description": "Website for bolligerstudios.ch built with React.",

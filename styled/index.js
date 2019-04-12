@@ -36,6 +36,7 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     line-height: 1.3333;
     background: ${colors.primary};
+    overflow-x: hidden;
   }
   @supports (font-variation-settings: normal) {
     html {

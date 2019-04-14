@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import ReactMarkdown from "react-markdown"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 import { baseUnits, breakpoints } from "../styled"
 import Container from "../styled/Container"
@@ -10,7 +10,7 @@ import { MediumTitle, LargeTitle } from "../styled/typography"
 
 const TextBlockSection = ({ textBlock, color, borderTop }) =>
   !textBlock ? null : (
-    <Container borderTop={borderTop} color={color}>
+    <ContainerMorePadding borderTop={borderTop} color={color}>
       <SideTitleSection title={textBlock.title}>
         <div>
           <ReactMarkdown
@@ -20,10 +20,17 @@ const TextBlockSection = ({ textBlock, color, borderTop }) =>
           />
         </div>
       </SideTitleSection>
-    </Container>
+    </ContainerMorePadding>
   )
 
-const MediumParagraph = styled(MediumTitle)`
+const ContainerMorePadding = styled(Container)`
+  @media screen and (min-width: ${breakpoints.mobile}) {
+    padding-top: ${baseUnits(1)};
+    padding-bottom: ${baseUnits(1)};
+  }
+`
+
+const sharedPaddingRight = css`
   padding-right: 0;
 
   @media screen and (min-width: ${breakpoints.mobile}) {
@@ -35,8 +42,18 @@ const MediumParagraph = styled(MediumTitle)`
   }
 `
 
+const MediumParagraph = styled(MediumTitle)`
+  ${sharedPaddingRight}
+  margin-bottom: 0;
+`
+const LargeTitleWithPaddingRight = styled(LargeTitle)`
+  ${sharedPaddingRight}
+`
+
 const largeMediumRenderer = {
-  heading: ({ children }) => <LargeTitle>{children}</LargeTitle>,
+  heading: ({ children }) => (
+    <LargeTitleWithPaddingRight>{children}</LargeTitleWithPaddingRight>
+  ),
   paragraph: ({ children }) => <MediumParagraph>{children}</MediumParagraph>
 }
 

@@ -3,6 +3,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
+    "export": "next build && next export",
     "deploy": "bash deploy.sh"
   },
   "name": "bolliger-studios-react-website",

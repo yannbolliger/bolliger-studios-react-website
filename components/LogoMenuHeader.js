@@ -16,6 +16,7 @@ const LogoMenuHeader = ({ titles }) => {
       {isMenuVisible && (
         <Menu titles={titles} onClose={() => setMenuVisible(false)} />
       )}
+
       <Container>
         <SplitViewTopPadding>
           <Logo src="static/BST-Logo.svg" />
@@ -38,7 +39,7 @@ const SplitViewTopPadding = styled(SplitView)`
 
 const Logo = styled.img`
   width: ${baseUnits(6.28)};
-  max-width: 100%;
+  max-width: calc(100% - ${baseUnits(1)});
 `
 
 LogoMenuHeader.propTypes = {

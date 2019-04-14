@@ -20,6 +20,7 @@ const BurgerWrapper = styled.div`
 
   width: ${baseUnits(0.5)};
   height: 1rem;
+  flex-shrink: 0;
 
   cursor: pointer;
 `

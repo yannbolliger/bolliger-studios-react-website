@@ -6,7 +6,11 @@ const Container = styled.div`
   flex-flow: column nowrap;
   width: 100%;
 
-  padding: ${baseUnits(0.5)} ${baseUnits(1)};
+  padding: ${baseUnits(0.5)};
+
+  @media screen and (min-width: ${breakpoints.mobile}) {
+    padding: ${baseUnits(0.5)} ${baseUnits(1)};
+  }
 
   background-color: ${props => props.color || colors.primary};
 

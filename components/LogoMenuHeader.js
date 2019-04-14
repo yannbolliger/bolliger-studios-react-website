@@ -3,15 +3,20 @@ import styled from "styled-components"
 import { baseUnits } from "../styled"
 
 import Container from "../styled/Container"
+import SplitView from "../styled/SplitView"
 
 const LogoMenuHeader = () => (
   <Container>
-    <Logo src="static/BST-Logo.svg" />
+    <SplitView>
+      <Logo src="static/BST-Logo.svg" />
+    </SplitView>
   </Container>
 )
 
 const Logo = styled.img`
-  max-width: ${baseUnits(6.28)};
+  margin-top: ${baseUnits(0.5)};
+  width: ${baseUnits(6.28)};
+  max-width: 100%;
 `
 
 export default LogoMenuHeader

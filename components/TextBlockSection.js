@@ -1,10 +1,12 @@
 import React from "react"
 import PropTypes from "prop-types"
 import ReactMarkdown from "react-markdown"
+import styled from "styled-components"
 
+import { baseUnits, breakpoints } from "../styled"
 import Container from "../styled/Container"
 import SideTitleSection from "../styled/SideTitle"
-import { MediumParagraph, LargeTitle } from "../styled/typography"
+import { MediumTitle, LargeTitle } from "../styled/typography"
 
 const TextBlockSection = ({ textBlock, color, borderTop }) =>
   !textBlock ? null : (
@@ -20,6 +22,18 @@ const TextBlockSection = ({ textBlock, color, borderTop }) =>
       </SideTitleSection>
     </Container>
   )
+
+const MediumParagraph = styled(MediumTitle)`
+  padding-right: 0;
+
+  @media screen and (min-width: ${breakpoints.mobile}) {
+    padding-right: ${baseUnits(2)};
+  }
+
+  @media screen and (min-width: ${breakpoints.medium}) {
+    padding-right: ${baseUnits(4)};
+  }
+`
 
 const largeMediumRenderer = {
   heading: ({ children }) => <LargeTitle>{children}</LargeTitle>,

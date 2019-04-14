@@ -11,7 +11,7 @@ const LogoMenuHeader = () => (
 )
 
 const Logo = styled.img`
-  width: ${baseUnits(6.28)};
+  max-width: ${baseUnits(6.28)};
 `
 
 export default LogoMenuHeader

@@ -1,25 +1,31 @@
 import { createGlobalStyle } from "styled-components"
 
-const orange = "#FF9500"
-const orangeLight = "#FFE4BD"
-const blue = "#C9D4D6"
-const blueLight = "#E3EAEB"
-const black = "#000"
-
-export const colors = {
-  borderColor: black,
-  primary: orange,
-  primaryLight: orangeLight,
-  secondary: blue,
-  secondaryLight: blueLight
+export const breakpoints = {
+  mobile: "640px",
+  medium: "800px"
 }
 
 const baseFontSize = 18 // in pixel
-export const baseUnits = factor => `${factor * 2.77777777 * baseFontSize}px`
-export const borderWidth = "3px"
 
+export const baseUnits = factor => {
+  const remToUnitFactor = 2.7777777777
+  const roundedToHalfPixel =
+    Math.round(factor * remToUnitFactor * baseFontSize * 2) / 2.0
+
+  return `${roundedToHalfPixel}px`
+}
+
+const borderWidth = "3px"
 export const borders = active =>
   active ? `solid ${colors.borderColor} ${borderWidth}` : `none`
+
+export const colors = {
+  borderColor: "#000",
+  primary: "#FF9500",
+  primaryLight: "#FFE4BD",
+  secondary: "#C9D4D6",
+  secondaryLight: "#E3EAEB"
+}
 
 export const GlobalStyle = createGlobalStyle`
   *,

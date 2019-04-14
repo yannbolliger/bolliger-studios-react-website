@@ -21,7 +21,7 @@ const Home = () => {
         <title>Bolliger Studios</title>
       </Head>
 
-      <LogoMenuHeader />
+      <LogoMenuHeader titles={Object.values(textBlocks).map(b => b.title)} />
 
       <AboutSection textBlock={textBlocksBySlug.about} />
 

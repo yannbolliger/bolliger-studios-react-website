@@ -15,7 +15,7 @@ export const baseUnits = factor => {
   return `${roundedToHalfPixel}px`
 }
 
-const borderWidth = "3px"
+export const borderWidth = "3px"
 export const borders = active =>
   active ? `solid ${colors.borderColor} ${borderWidth}` : `none`
 

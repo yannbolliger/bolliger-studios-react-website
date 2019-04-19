@@ -43,7 +43,7 @@ const Logo = styled.img`
 `
 
 LogoMenuHeader.propTypes = {
-  titles: PropTypes.object.isRequired
+  titles: PropTypes.array.isRequired
 }
 
 export default LogoMenuHeader

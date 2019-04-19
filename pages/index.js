@@ -5,7 +5,7 @@ import { useApiData } from "../api"
 import LogoMenuHeader from "../components/LogoMenuHeader"
 import AboutSection from "../components/AboutSection"
 import ProjectsSection from "../components/ProjectsSection"
-import TextBlockSection from "../components/TextBlockSection"
+import ContactSection from "../components/ContactSection"
 
 const Home = () => {
   const textBlocks = useApiData({ collection: "text_blocks" })
@@ -27,7 +27,7 @@ const Home = () => {
 
       <ProjectsSection textBlock={textBlocksBySlug.projects} />
 
-      <TextBlockSection textBlock={textBlocksBySlug.contact} borderTop />
+      <ContactSection textBlock={textBlocksBySlug.contact} />
     </>
   )
 }

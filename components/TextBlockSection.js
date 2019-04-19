@@ -8,7 +8,7 @@ import Container from "../styled/Container"
 import SideTitleSection from "../styled/SideTitle"
 import { MediumTitle, LargeTitle } from "../styled/typography"
 
-const TextBlockSection = ({ textBlock, color, borderTop }) =>
+const TextBlockSection = ({ textBlock, color, borderTop, children }) =>
   !textBlock ? null : (
     <ContainerMorePadding borderTop={borderTop} color={color}>
       <SideTitleSection title={textBlock.title}>
@@ -18,6 +18,8 @@ const TextBlockSection = ({ textBlock, color, borderTop }) =>
             renderers={largeMediumRenderer}
             source={textBlock.text}
           />
+
+          {children}
         </div>
       </SideTitleSection>
     </ContainerMorePadding>
@@ -60,7 +62,8 @@ const largeMediumRenderer = {
 TextBlockSection.propTypes = {
   textBlock: PropTypes.object,
   color: PropTypes.string,
-  borderTop: PropTypes.bool
+  borderTop: PropTypes.bool,
+  children: PropTypes.node
 }
 
 export default TextBlockSection

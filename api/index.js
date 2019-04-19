@@ -19,3 +19,6 @@ export const useApiData = ({ collection, fields }) => {
 
   return data
 }
+
+export const sendMail = ({ name, email, message }) =>
+  client.createItem("contact_forms", { name, email, message })

@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components"
 
 export const breakpoints = {
   mobile: "640px",
-  medium: "800px"
+  medium: "950px"
 }
 
 const baseFontSize = 18 // in pixel

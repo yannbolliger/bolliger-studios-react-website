@@ -18,14 +18,6 @@ const AboutPersonSection = ({ personalInfo, borderRight }) => (
       </MediumTitle>
     </SideTitleSection>
 
-    <MarginWrapper marginBottom={!personalInfo.photo}>
-      <ReactMarkdown linkTarget="_blank">
-        {`About &mdash; ${personalInfo.description}`}
-      </ReactMarkdown>
-    </MarginWrapper>
-
-    {personalInfo.photo && <Image src={personalInfo.photo.data.full_url} />}
-
     {personalInfo.links && (
       <SplitView>
         <SideMargin>Links</SideMargin>
@@ -33,11 +25,19 @@ const AboutPersonSection = ({ personalInfo, borderRight }) => (
         <ReactMarkdown linkTarget="_blank">{personalInfo.links}</ReactMarkdown>
       </SplitView>
     )}
+
+    {personalInfo.photo && <Image src={personalInfo.photo.data.full_url} />}
+
+    <MarginWrapper marginTop={!personalInfo.photo}>
+      <ReactMarkdown linkTarget="_blank">
+        {`About &mdash; ${personalInfo.description}`}
+      </ReactMarkdown>
+    </MarginWrapper>
   </Container>
 )
 
 const MarginWrapper = styled.div`
-  margin-bottom: ${props => (props.marginBottom ? baseUnits(0.5) : "0")};
+  margin-top: ${props => (props.marginTop ? baseUnits(0.5) : "0")};
 `
 
 AboutPersonSection.propTypes = {

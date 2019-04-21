@@ -51,7 +51,7 @@ const ScrollLinks = styled.a`
 `
 
 Menu.propTypes = {
-  titles: PropTypes.object.isRequired,
+  titles: PropTypes.array.isRequired,
   onClose: PropTypes.func
 }
 

@@ -1,32 +1,20 @@
-import React, { useReducer } from "react"
+import React from "react"
 import PropTypes from "prop-types"
 import styled, { css } from "styled-components"
 
-import { borders, baseUnits, breakpoints, colors } from "."
+import { borders, baseUnits, breakpoints } from "."
 
 const Input = props => {
-  const onChange = event =>
-    props.onChangeInputState({ type: "value", value: event.target.value })
-
   const InputType = props.type === "textarea" ? MultiLineInput : BasicInput
 
   const labelText = props.label || props.name
   const capitalisedLabel = labelText[0].toUpperCase() + labelText.substr(1)
 
-  const { onChangeInputState, inputState, ...propsToPassDown } = props
-
   return (
     <InputWrapper fullWidth={props.type === "textarea"}>
-      <InputType
-        {...propsToPassDown}
-        placeholder={capitalisedLabel}
-        onChange={onChange}
-        value={props.inputState.value}
-      />
+      <InputType {...props} placeholder={capitalisedLabel} />
 
-      {props.inputState.error && (
-        <ErrorLabel>{props.inputState.error}</ErrorLabel>
-      )}
+      {props.error && <ErrorLabel>{props.error}</ErrorLabel>}
     </InputWrapper>
   )
 }
@@ -71,27 +59,10 @@ const ErrorLabel = styled.div``
 Input.propTypes = {
   type: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  onChangeInputState: PropTypes.func.isRequired,
-  inputState: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+  error: PropTypes.string,
   label: PropTypes.string
 }
 
 export default Input
-
-export const useInputState = initialState => {
-  const reducer = (state, action) => {
-    switch (action.type) {
-      case "error":
-        return { ...state, error: action.error }
-      default:
-        return { ...state, value: action.value }
-    }
-  }
-
-  const [inputState, setInputState] = useReducer(reducer, {
-    value: initialState,
-    error: ""
-  })
-
-  return [inputState, setInputState]
-}

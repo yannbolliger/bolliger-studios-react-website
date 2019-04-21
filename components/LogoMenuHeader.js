@@ -20,6 +20,7 @@ const LogoMenuHeader = ({ titles }) => {
       <Container>
         <SplitViewTopPadding>
           <Logo src="static/BST-Logo.svg" />
+
           {!isMenuVisible && <Burger onClick={() => setMenuVisible(true)} />}
         </SplitViewTopPadding>
       </Container>

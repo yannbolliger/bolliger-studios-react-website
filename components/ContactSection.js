@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import PropTypes from "prop-types"
 
 import { colors } from "../styled"
@@ -9,6 +9,13 @@ import MailFormSection from "./MailFormSection"
 
 const ContactSection = ({ textBlock }) => {
   const [isFormVisible, setFormVisible] = useState(false)
+  const formRef = useRef(null)
+
+  useEffect(() => {
+    if (formRef.current) {
+      formRef.current.scrollIntoView({ behavior: "smooth" })
+    }
+  }, [isFormVisible])
 
   return (
     <>
@@ -19,7 +26,10 @@ const ContactSection = ({ textBlock }) => {
       </TextBlockSection>
 
       {isFormVisible && (
-        <MailFormSection onCloseClick={() => setFormVisible(false)} />
+        <MailFormSection
+          ref={formRef}
+          onCloseClick={() => setFormVisible(false)}
+        />
       )}
     </>
   )

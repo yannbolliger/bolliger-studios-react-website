@@ -8,8 +8,8 @@ import SplitView from "../styled/SplitView"
 import { SideMargin } from "../styled/SideTitle"
 import MailForm from "./MailForm"
 
-const MailFormSection = ({ onCloseClick }) => (
-  <Container color={colors.primaryLight} borderTop>
+const MailFormSection = React.forwardRef(({ onCloseClick }, ref) => (
+  <Container ref={ref} color={colors.primaryLight} borderTop>
     <SplitView>
       <SideMargin>
         <Cross onClick={onCloseClick} />
@@ -18,7 +18,7 @@ const MailFormSection = ({ onCloseClick }) => (
       <MailForm />
     </SplitView>
   </Container>
-)
+))
 
 MailFormSection.propTypes = {
   onCloseClick: PropTypes.func.isRequired

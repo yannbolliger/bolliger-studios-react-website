@@ -17,6 +17,7 @@ const MailForm = () => {
   const onSubmit = event => {
     event.preventDefault()
     isFormSubmitted.setValue("Wird geschickt...")
+    isFormSubmitted.setError("")
 
     sendMail({
       name: name.value,

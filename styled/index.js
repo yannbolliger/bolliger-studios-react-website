@@ -20,6 +20,7 @@ export const borders = active =>
   active ? `solid ${colors.borderColor} ${borderWidth}` : `none`
 
 export const colors = {
+  textColor: "#000",
   borderColor: "#000",
   primary: "#FF9500",
   primaryLight: "#FFE4BD",
@@ -41,6 +42,8 @@ export const GlobalStyle = createGlobalStyle`
     font-size: ${baseFontSize}px;
     font-weight: 400;
     line-height: 1.3333;
+    color: ${colors.textColor};
+
     background: ${colors.primary};
     overflow-x: hidden;
   }

@@ -1,10 +1,9 @@
 import React from "react"
-import PropTypes from "prop-types"
-import styled from "styled-components"
 
 import { sendMail } from "../api"
 import Form from "../styled/Form"
 import Input, { useInputState } from "../styled/Input"
+import { ButtonInput } from "../styled/Button"
 
 const MailForm = () => {
   const [name, setName] = useInputState("")
@@ -13,7 +12,6 @@ const MailForm = () => {
 
   const onSubmit = event => {
     event.preventDefault()
-
     sendMail({ name: name.value, email: email.value, message: message.value })
   }
 
@@ -39,10 +37,10 @@ const MailForm = () => {
         type="textarea"
         inputState={message}
         onChangeInputState={setMessage}
-        width="100%"
+        rows="4"
       />
 
-      <input name="submit" type="submit" value="Abschicken" />
+      <ButtonInput name="submit" type="submit" value="Nachricht schicken" />
     </Form>
   )
 }

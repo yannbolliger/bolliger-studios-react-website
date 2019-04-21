@@ -2,7 +2,7 @@ import React, { useReducer } from "react"
 import PropTypes from "prop-types"
 import styled, { css } from "styled-components"
 
-import { borders, baseUnits, breakpoints } from "."
+import { borders, baseUnits, breakpoints, colors } from "."
 
 const Input = props => {
   const onChange = event =>
@@ -11,14 +11,15 @@ const Input = props => {
   const InputType = props.type === "textarea" ? MultiLineInput : BasicInput
 
   const labelText = props.label || props.name
-  const label = labelText[0].toUpperCase() + labelText.substr(1)
+  const capitalisedLabel = labelText[0].toUpperCase() + labelText.substr(1)
+
+  const { onChangeInputState, inputState, ...propsToPassDown } = props
 
   return (
     <InputWrapper fullWidth={props.type === "textarea"}>
-      <label htmlFor={props.name}>{label}</label>
-
       <InputType
-        {...props}
+        {...propsToPassDown}
+        placeholder={capitalisedLabel}
         onChange={onChange}
         value={props.inputState.value}
       />
@@ -31,8 +32,7 @@ const Input = props => {
 }
 
 const InputWrapper = styled.div`
-  margin-top: ${baseUnits(0.25)};
-  margin-bottom: ${baseUnits(0.25)};
+  margin-bottom: ${baseUnits(0.5)};
   flex-basis: 100%;
 
   @media screen and (min-width: ${breakpoints.mobile}) {
@@ -43,11 +43,18 @@ const InputWrapper = styled.div`
 
 const sharedInputStyles = css`
   width: 100%;
+  padding-bottom: 0.25em;
 
-  font-size: 1rem;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
   background: transparent;
   border: none;
   border-bottom: ${borders(true)};
+
+  ::placeholder {
+    opacity: 1;
+  }
 `
 
 const BasicInput = styled.input`
@@ -56,7 +63,6 @@ const BasicInput = styled.input`
 
 const MultiLineInput = styled.textarea`
   ${sharedInputStyles}
-
   resize: vertical;
 `
 

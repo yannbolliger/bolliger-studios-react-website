@@ -76,8 +76,13 @@ return [
 
     'mail' => [
         'default' => [
-            'transport' => 'sendmail',
-            'from' => 'api@bolligerstudios.ch'
+            'transport' => 'smtp',
+            'from' => 'api@bolligerstudios.ch',
+            'username' => 'api@bolligerstudios.ch',
+            'host' => '',
+            'port' => 587,
+            'password' => '',
+            'encryption' => 'tls'
         ],
     ],
 
@@ -116,7 +121,7 @@ return [
                     'text/html',
                     function (Directus\Mail\Message $message) {
                         $message->setSubject("New contact form submission on bolligerstudios.ch");
-                        $message->setTo("kontakt@bolligerstudios.ch");
+                        $message->setTo("formular_2019@bolligerstudios.ch");
                     }
                 );
             }

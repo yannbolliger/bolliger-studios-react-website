@@ -22,7 +22,7 @@ const AboutPersonSection = ({ personalInfo, borderRight }) => (
     {personalInfo.links && (
       <SplitView>
         <SideMargin>Links</SideMargin>
-        <Markdown>{personalInfo.links}</Markdown>
+        <Markdown inlineBlocks>{personalInfo.links}</Markdown>
       </SplitView>
     )}
 
@@ -31,7 +31,7 @@ const AboutPersonSection = ({ personalInfo, borderRight }) => (
     )}
 
     <MarginWrapper marginTop={!personalInfo.photo}>
-      <Markdown>{`About &mdash; ${personalInfo.description}`}</Markdown>
+      <Markdown links>{`About &mdash; ${personalInfo.description}`}</Markdown>
     </MarginWrapper>
   </Container>
 )

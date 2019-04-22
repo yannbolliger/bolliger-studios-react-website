@@ -6,13 +6,16 @@ import { colors, baseUnits, breakpoints } from "../styled"
 import Container from "../styled/Container"
 import SplitView from "../styled/SplitView"
 import Cross from "../styled/Cross"
+import ScrollLink from "../styled/ScrollLink"
 
-const Menu = ({ titles, onClose }) => (
+const Menu = ({ sections, onClose }) => (
   <Container borderBottom color={colors.primaryLight}>
     <SplitViewPadding>
       <LinkWrapper>
-        {titles.map(title => (
-          <ScrollLinks key={title}>{title}</ScrollLinks>
+        {sections.map(section => (
+          <ScrollLinkWithMargin targetRef={section.ref} key={section.id}>
+            {section.textBlock.title}
+          </ScrollLinkWithMargin>
         ))}
       </LinkWrapper>
 
@@ -40,7 +43,7 @@ const LinkWrapper = styled.div`
   }
 `
 
-const ScrollLinks = styled.a`
+const ScrollLinkWithMargin = styled(ScrollLink)`
   margin: 0;
   margin-bottom: ${baseUnits(0.25)};
 
@@ -51,7 +54,7 @@ const ScrollLinks = styled.a`
 `
 
 Menu.propTypes = {
-  titles: PropTypes.array.isRequired,
+  sections: PropTypes.array.isRequired,
   onClose: PropTypes.func
 }
 

@@ -7,7 +7,7 @@ import Button from "../styled/Button"
 import TextBlockSection from "./TextBlockSection"
 import MailFormSection from "./MailFormSection"
 
-const ContactSection = ({ textBlock }) => {
+const ContactSection = ({ textBlock, scrollRef }) => {
   const [isFormVisible, setFormVisible] = useState(false)
   const formRef = useRef(null)
 
@@ -19,7 +19,12 @@ const ContactSection = ({ textBlock }) => {
 
   return (
     <>
-      <TextBlockSection textBlock={textBlock} color={colors.primary} borderTop>
+      <TextBlockSection
+        textBlock={textBlock}
+        color={colors.primary}
+        borderTop
+        scrollRef={scrollRef}
+      >
         <MediumTitle>
           <Button onClick={() => setFormVisible(true)}>Email</Button>
         </MediumTitle>
@@ -27,7 +32,7 @@ const ContactSection = ({ textBlock }) => {
 
       {isFormVisible && (
         <MailFormSection
-          ref={formRef}
+          scrollRef={formRef}
           onCloseClick={() => setFormVisible(false)}
         />
       )}
@@ -36,7 +41,8 @@ const ContactSection = ({ textBlock }) => {
 }
 
 ContactSection.propTypes = {
-  textBlock: PropTypes.object
+  textBlock: PropTypes.object,
+  scrollRef: PropTypes.object.isRequired
 }
 
 export default ContactSection

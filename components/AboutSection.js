@@ -6,7 +6,7 @@ import SplitView from "../styled/SplitView"
 import TextBlockSection from "./TextBlockSection"
 import AboutPersonSection from "./AboutPersonSection"
 
-const AboutSection = ({ textBlock }) => {
+const AboutSection = ({ textBlock, scrollRef }) => {
   const people = useApiData({
     collection: "personal_infos",
     fields: "*, person.first_name, person.last_name, photo.*"
@@ -14,7 +14,7 @@ const AboutSection = ({ textBlock }) => {
 
   return (
     <>
-      <TextBlockSection textBlock={textBlock} />
+      <TextBlockSection scrollRef={scrollRef} textBlock={textBlock} />
 
       {people[0] && people[1] && (
         <SplitView>
@@ -27,7 +27,8 @@ const AboutSection = ({ textBlock }) => {
 }
 
 AboutSection.propTypes = {
-  textBlock: PropTypes.object
+  textBlock: PropTypes.object,
+  scrollRef: PropTypes.object.isRequired
 }
 
 export default AboutSection

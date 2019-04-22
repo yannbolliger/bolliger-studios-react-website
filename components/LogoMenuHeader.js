@@ -8,20 +8,22 @@ import Burger from "../styled/Burger"
 import SplitView from "../styled/SplitView"
 import Menu from "./Menu"
 
-const LogoMenuHeader = ({ titles }) => {
+const LogoMenuHeader = ({ sections }) => {
   const [isMenuVisible, setMenuVisible] = useState(false)
+
+  const textBlocksLoaded = sections[0].textBlock !== undefined
 
   return (
     <>
       {isMenuVisible && (
-        <Menu titles={titles} onClose={() => setMenuVisible(false)} />
+        <Menu sections={sections} onClose={() => setMenuVisible(false)} />
       )}
 
       <Container>
         <SplitViewTopPadding>
           <Logo src="static/BST-Logo.svg" />
 
-          {titles && !isMenuVisible && (
+          {textBlocksLoaded && !isMenuVisible && (
             <Burger onClick={() => setMenuVisible(true)} />
           )}
         </SplitViewTopPadding>
@@ -46,7 +48,7 @@ const Logo = styled.img`
 `
 
 LogoMenuHeader.propTypes = {
-  titles: PropTypes.array.isRequired
+  sections: PropTypes.array.isRequired
 }
 
 export default LogoMenuHeader

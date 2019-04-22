@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 
+import { getThumbnail } from "../api"
 import { colors, baseUnits } from "../styled"
 import SideTitleSection, { SideMargin } from "../styled/SideTitle"
 import Container from "../styled/Container"
@@ -25,7 +26,9 @@ const AboutPersonSection = ({ personalInfo, borderRight }) => (
       </SplitView>
     )}
 
-    {personalInfo.photo && <Image src={personalInfo.photo.data.full_url} />}
+    {personalInfo.photo && (
+      <Image src={getThumbnail(personalInfo.photo.filename)} />
+    )}
 
     <MarginWrapper marginTop={!personalInfo.photo}>
       <Markdown>{`About &mdash; ${personalInfo.description}`}</Markdown>

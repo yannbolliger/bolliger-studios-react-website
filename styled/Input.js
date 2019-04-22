@@ -39,9 +39,11 @@ const sharedInputStyles = css`
   background: transparent;
   border: none;
   border-bottom: ${borders(true)};
+  border-radius: 0;
 
   ::placeholder {
     opacity: 1;
+    color: inherit;
   }
 `
 

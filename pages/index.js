@@ -1,5 +1,7 @@
-import React from "react"
+import React, { useEffect } from "react"
 import Head from "next/head"
+
+import smoothscroll from "smoothscroll-polyfill"
 
 import { useApiData } from "../api"
 import LogoMenuHeader from "../components/LogoMenuHeader"
@@ -8,6 +10,10 @@ import ProjectsSection from "../components/ProjectsSection"
 import ContactSection from "../components/ContactSection"
 
 const Home = () => {
+  useEffect(() => {
+    smoothscroll.polyfill()
+  })
+
   const textBlocks = useApiData({ collection: "text_blocks" })
 
   const textBlocksBySlug = Object.values(textBlocks).reduce(

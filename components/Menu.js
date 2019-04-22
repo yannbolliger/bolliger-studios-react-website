@@ -8,12 +8,16 @@ import SplitView from "../styled/SplitView"
 import Cross from "../styled/Cross"
 import ScrollLink from "../styled/ScrollLink"
 
-const Menu = ({ sections, onClose }) => (
-  <Container borderBottom color={colors.primaryLight}>
+const Menu = ({ visible, sections, onClose }) => (
+  <AnimatedContainer visible={visible} borderBottom color={colors.primaryLight}>
     <SplitViewPadding>
       <LinkWrapper>
         {sections.map(section => (
-          <ScrollLinkWithMargin targetRef={section.ref} key={section.id}>
+          <ScrollLinkWithMargin
+            targetRef={section.ref}
+            key={section.id}
+            onClick={onClose}
+          >
             {section.textBlock.title}
           </ScrollLinkWithMargin>
         ))}
@@ -21,8 +25,12 @@ const Menu = ({ sections, onClose }) => (
 
       <Cross onClick={onClose} />
     </SplitViewPadding>
-  </Container>
+  </AnimatedContainer>
 )
+
+const AnimatedContainer = styled(Container)`
+  display: ${props => (props.visible ? "block" : "none")};
+`
 
 const SplitViewPadding = styled(SplitView)`
   flex-wrap: nowrap;
@@ -55,6 +63,7 @@ const ScrollLinkWithMargin = styled(ScrollLink)`
 
 Menu.propTypes = {
   sections: PropTypes.array.isRequired,
+  visible: PropTypes.bool.isRequired,
   onClose: PropTypes.func
 }
 

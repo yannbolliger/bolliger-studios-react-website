@@ -15,8 +15,12 @@ const LogoMenuHeader = ({ sections }) => {
 
   return (
     <>
-      {isMenuVisible && (
-        <Menu sections={sections} onClose={() => setMenuVisible(false)} />
+      {textBlocksLoaded && (
+        <Menu
+          visible={isMenuVisible}
+          sections={sections}
+          onClose={() => setMenuVisible(false)}
+        />
       )}
 
       <Container>

@@ -1,21 +1,16 @@
-import React, { useState, useRef, useEffect } from "react"
+import React, { useState, useRef } from "react"
 import PropTypes from "prop-types"
 
 import { colors } from "../styled"
 import { MediumTitle } from "../styled/typography"
 import Button from "../styled/Button"
+import ScrollLink from "../styled/ScrollLink"
 import TextBlockSection from "./TextBlockSection"
 import MailFormSection from "./MailFormSection"
 
 const ContactSection = ({ textBlock, scrollRef }) => {
   const [isFormVisible, setFormVisible] = useState(false)
   const formRef = useRef(null)
-
-  useEffect(() => {
-    if (formRef.current) {
-      formRef.current.scrollIntoView({ behavior: "smooth" })
-    }
-  }, [isFormVisible])
 
   return (
     <>
@@ -26,7 +21,13 @@ const ContactSection = ({ textBlock, scrollRef }) => {
         scrollRef={scrollRef}
       >
         <MediumTitle>
-          <Button onClick={() => setFormVisible(true)}>Email</Button>
+          <ScrollLink
+            as="div"
+            onClick={() => setFormVisible(true)}
+            targetRef={formRef}
+          >
+            <Button>Email</Button>
+          </ScrollLink>
         </MediumTitle>
       </TextBlockSection>
 

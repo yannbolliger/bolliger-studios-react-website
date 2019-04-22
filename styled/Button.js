@@ -37,7 +37,7 @@ const InnerInput = styled.input`
 `
 
 export const ButtonInput = props => (
-  <ButtonLink>
+  <ButtonLink as="div">
     <InnerInput {...props} />
   </ButtonLink>
 )

@@ -1,26 +1,27 @@
 import React from "react"
 import PropTypes from "prop-types"
-import ReactMarkdown from "react-markdown"
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 
 import { baseUnits, breakpoints } from "../styled"
 import Container from "../styled/Container"
 import SideTitleSection from "../styled/SideTitle"
-import { MediumTitle, LargeTitle } from "../styled/typography"
+import Markdown from "../styled/Markdown"
 
-const TextBlockSection = ({ textBlock, color, borderTop, children }) =>
+const TextBlockSection = ({
+  textBlock,
+  color,
+  borderTop,
+  children,
+  scrollRef
+}) =>
   !textBlock ? null : (
-    <ContainerMorePadding borderTop={borderTop} color={color}>
+    <ContainerMorePadding borderTop={borderTop} color={color} ref={scrollRef}>
       <SideTitleSection title={textBlock.title}>
-        <div>
-          <ReactMarkdown
-            linkTarget="_blank"
-            renderers={largeMediumRenderer}
-            source={textBlock.text}
-          />
+        <PaddingRightWrapper>
+          <Markdown largeMedium>{textBlock.text}</Markdown>
 
           {children}
-        </div>
+        </PaddingRightWrapper>
       </SideTitleSection>
     </ContainerMorePadding>
   )
@@ -32,7 +33,7 @@ const ContainerMorePadding = styled(Container)`
   }
 `
 
-const sharedPaddingRight = css`
+const PaddingRightWrapper = styled.div`
   padding-right: 0;
 
   @media screen and (min-width: ${breakpoints.mobile}) {
@@ -44,23 +45,9 @@ const sharedPaddingRight = css`
   }
 `
 
-const MediumParagraph = styled(MediumTitle)`
-  ${sharedPaddingRight}
-  margin-bottom: 0;
-`
-const LargeTitleWithPaddingRight = styled(LargeTitle)`
-  ${sharedPaddingRight}
-`
-
-const largeMediumRenderer = {
-  heading: ({ children }) => (
-    <LargeTitleWithPaddingRight>{children}</LargeTitleWithPaddingRight>
-  ),
-  paragraph: ({ children }) => <MediumParagraph>{children}</MediumParagraph>
-}
-
 TextBlockSection.propTypes = {
   textBlock: PropTypes.object,
+  scrollRef: PropTypes.object,
   color: PropTypes.string,
   borderTop: PropTypes.bool,
   children: PropTypes.node

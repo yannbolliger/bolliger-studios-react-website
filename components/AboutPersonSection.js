@@ -1,6 +1,5 @@
 import React from "react"
 import PropTypes from "prop-types"
-import ReactMarkdown from "react-markdown"
 import styled from "styled-components"
 
 import { colors, baseUnits } from "../styled"
@@ -9,6 +8,7 @@ import Container from "../styled/Container"
 import SplitView from "../styled/SplitView"
 import Image from "../styled/Image"
 import { MediumTitle } from "../styled/typography"
+import Markdown from "../styled/Markdown"
 
 const AboutPersonSection = ({ personalInfo, borderRight }) => (
   <Container color={colors.primaryLight} borderRight={borderRight} borderTop>
@@ -21,17 +21,14 @@ const AboutPersonSection = ({ personalInfo, borderRight }) => (
     {personalInfo.links && (
       <SplitView>
         <SideMargin>Links</SideMargin>
-
-        <ReactMarkdown linkTarget="_blank">{personalInfo.links}</ReactMarkdown>
+        <Markdown>{personalInfo.links}</Markdown>
       </SplitView>
     )}
 
     {personalInfo.photo && <Image src={personalInfo.photo.data.full_url} />}
 
     <MarginWrapper marginTop={!personalInfo.photo}>
-      <ReactMarkdown linkTarget="_blank">
-        {`About &mdash; ${personalInfo.description}`}
-      </ReactMarkdown>
+      <Markdown>{`About &mdash; ${personalInfo.description}`}</Markdown>
     </MarginWrapper>
   </Container>
 )

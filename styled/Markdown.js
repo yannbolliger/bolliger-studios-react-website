@@ -25,22 +25,22 @@ const MediumParagraph = styled(MediumTitle)`
   margin-bottom: 0;
 `
 
-const largeMediumRenderer = {
-  heading: ({ children }) => <LargeTitle>{children}</LargeTitle>,
-  paragraph: ({ children }) => <MediumParagraph>{children}</MediumParagraph>
-}
-
-const linkRenderer = {
-  link: ({ children }) => <Button>{children}</Button>
-}
-
 const InlineParagraph = styled.p`
   display: inline-block;
   margin-right: ${baseUnits(0.25)};
 `
 
+const largeMediumRenderer = {
+  heading: props => <LargeTitle {...props} />,
+  paragraph: props => <MediumParagraph {...props} />
+}
+
+const linkRenderer = {
+  link: props => <Button {...props} />
+}
+
 const inlineRenderer = {
-  paragraph: ({ children }) => <InlineParagraph>{children}</InlineParagraph>
+  paragraph: props => <InlineParagraph {...props} />
 }
 
 Markdown.propTypes = {

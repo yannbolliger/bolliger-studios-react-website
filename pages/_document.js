@@ -2,7 +2,7 @@ import React from "react"
 import Document, { Html, Head, Main, NextScript } from "next/document"
 import { ServerStyleSheet } from "styled-components"
 
-import { GlobalStyle, colors } from "../styled"
+import { GlobalStyle, colors, fetchFontCss } from "../styled"
 
 export default class extends Document {
   /**
@@ -25,8 +25,11 @@ export default class extends Document {
         })
 
       const initialProps = await Document.getInitialProps(ctx)
+      const fontCssString = fetchFontCss()
+
       return {
         ...initialProps,
+        fontCssString,
         styles: (
           <>
             {initialProps.styles}
@@ -47,7 +50,8 @@ export default class extends Document {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-        <link href="https://rsms.me/inter/inter.css" rel="stylesheet" />
+
+        <style dangerouslySetInnerHTML={{ __html: this.props.fontCssString }} />
 
         <link
           rel="apple-touch-icon"

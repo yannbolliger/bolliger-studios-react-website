@@ -25,7 +25,7 @@ export default class extends Document {
         })
 
       const initialProps = await Document.getInitialProps(ctx)
-      const fontCssString = fetchFontCss()
+      const fontCssString = await fetchFontCss()
 
       return {
         ...initialProps,

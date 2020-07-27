@@ -113,21 +113,7 @@ return [
         'timeout' => 10
     ],
 
-    'hooks' => [
-        'actions' => [
-            'item.create.contact_forms' =>  function ($data) {
-                \Directus\send_mail_with_content(
-                    "A new contact form was submitted by\n$data->name $data->email\n\n$data->message",
-                    'text/html',
-                    function (Directus\Mail\Message $message) {
-                        $message->setSubject("New contact form submission on bolligerstudios.ch");
-                        $message->setTo("formular_2019@bolligerstudios.ch");
-                    }
-                );
-            }
-        ],
-        'filters' => [],
-    ],
+    'hooks' => [],
 
     'feedback' => [
         'token' => '9dcc6091fbd2ee8e13d2bc1624f17380a629f797',

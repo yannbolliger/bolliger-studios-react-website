@@ -22,7 +22,7 @@
   "homepage": "https://github.com/yannbolliger/bolliger-studios-react-website#readme",
   "dependencies": {
     "@directus/sdk-js": "^5.2.1",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "next": "^9.5.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.5",
